@@ -8,6 +8,12 @@ void print_mapinfo(t_mapinfo *map) {
 	printf("map:\t%p\n", map->map);
 }
 
+void    free_map(char **map, size_t rows) {
+    for (size_t i = 0; i < rows; i++)
+        free(map[i]);
+    free(map);
+}
+
 // returns zero on success non-zero value on error
 int    parse_map_header(t_mapinfo *map, FILE *file) {
     size_t buffer_size = 0;
@@ -107,11 +113,13 @@ int    parse_map(t_mapinfo *map, FILE *file) {
 
         if (i < map->width) {
             fprintf(stderr, "width of line %ld is too short, expected %ld got %ld\n", line_index + 1, map->width, i);
-            // TODO: free allocations in map
+            free_map(map->map, line_index + 1);
+            printf("line index:\t%ld\n", line_index);
             return 1;
         } else if (i > map->width) {
             fprintf(stderr, "width of line %ld is too long, expected %ld got %ld\n", line_index + 1, map->width, i);
-            // TODO: free allocations in map
+            free_map(map->map, line_index + 1);
+            printf("line index:\t%ld\n", line_index);
             return 1;
         }
         // printf("%p:\n%s", map->map[line_index], map->map[line_index]);
@@ -123,23 +131,23 @@ int    parse_map(t_mapinfo *map, FILE *file) {
 
     if (line_index != map->height) {
         fprintf(stderr, "map height did not match header\n");
-        // TODO free map
+        free_map(map->map, line_index + 1);
         return 1;
     }
 
     if (start_count < 1) {
         fprintf(stderr, "missing start\n");
-        // free map
+        free_map(map->map, line_index + 1);
         return 1;
     } else if (start_count > 1) {
         fprintf(stderr, "too many start points, only one allowed\n");
-        // free map
+        free_map(map->map, line_index + 1);
         return 1;
     }
 
     if (end_count == 0) {
         fprintf(stderr, "no exit found\n");
-        // free map
+        free_map(map->map, line_index + 1);
         return 1;
     }
 
