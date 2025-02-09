@@ -46,7 +46,7 @@ Making a 10 by 10 maze:
 ./maze_gen.rb 10 10 "* o12"
 ```
 
-Additional rules as specified in [Grimly Instructions.pdf](https://github.com/rsilva42/grimly_rust/blob/master/Grimly%20Instructions.pdf) page 5 (adjusted for consistency):
+Additional rules as specified in [Grimly Instructions.pdf](https://github.com/rsilva42/grimly/blob/master/Grimly%20Instructions.pdf) page 5 (adjusted for consistency):
 
 * All lines must respect the sizes given in the first line (HeightxWidth).
 * There can only be one start.
@@ -59,4 +59,4 @@ Additional rules as specified in [Grimly Instructions.pdf](https://github.com/rs
 
 
 ## Project specifications
-The project is built to the specifications of the [Grimly Instructions.pdf](https://github.com/rsilva42/grimly_rust/blob/master/Grimly%20Instructions.pdf) document. I took some liberties, mainly using the standard library and more specific error messages.
+The project is built to the specifications of the [Grimly Instructions.pdf](https://github.com/rsilva42/grimly/blob/master/Grimly%20Instructions.pdf) document. I took some liberties, mainly using the standard library and more specific error messages.
