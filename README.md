@@ -52,7 +52,7 @@ Additional rules as specified in [Grimly Instructions.pdf](https://github.com/rs
 * There can only be one start.
 * There must be at least one end.
 * There must be a solution to the maze.
-* The maze will not be more than a billion squared.
+* The maze will not be more than a billion squares.
 * At the end of each line, there is a new line.
 * The characters present in the maze must only be those shown in the first line.
 * If there is an invalid maze, there must be an error message and then proceed to the next maze if any.
